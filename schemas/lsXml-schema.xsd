@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="us-ascii"?>
+!--  Xml schema for documenting a file system. Written by Jay Sprenkle   -->
 <xs:schema xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" elementFormDefault="qualified" targetNamespace="http://www.XmlCommandLine.org/FileSystem/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:complexType name="FileType" mixed="true">
         <xs:sequence>
