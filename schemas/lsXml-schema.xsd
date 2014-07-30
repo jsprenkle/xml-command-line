@@ -10,6 +10,13 @@
                         </xs:appinfo>
                     </xs:annotation>
                 </xs:element>
+                <xs:element name="Path" type="xs:string" minOccurs="1" maxOccurs="1" >
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <fieldInfo notes="Path of the file" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="Owner" type="xs:string" minOccurs="0" maxOccurs="1" >
                     <xs:annotation>
                         <xs:appinfo>
@@ -48,6 +55,13 @@
                     <xs:annotation>
                         <xs:appinfo>
                             <fieldInfo notes="Name of the Directory not including the path" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Path" type="xs:string" minOccurs="1" maxOccurs="1" >
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <fieldInfo notes="Path of the file" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
                         </xs:appinfo>
                     </xs:annotation>
                 </xs:element>
