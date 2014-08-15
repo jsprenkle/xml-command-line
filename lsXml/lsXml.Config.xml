@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Config xmlns="http://www.XmlCommandLine.org/lsXml/1.0">
+    <Recursive>true</Recursive>
+    <DotDot>false</DotDot>
+    <Context>true</Context>
+</Config>
