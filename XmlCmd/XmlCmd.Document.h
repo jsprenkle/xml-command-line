@@ -22,9 +22,8 @@ namespace XmlCmd
        * @param NamespaceString: namespace to use for xml
        * @param Declaration: xml document declaration
        * 
-       * TODO: currently declaration encoding must be us-ascii. Update code to recognize encoding and produce utf-8/utf-16/etc.
        */
-      Document( const char* NamespaceString = "default", const char* prefix = "ns", const char* Declaration = 0 );
+      Document( const char* NamespaceString = "default", const char* prefix = "ns", const char* type = "root", const char* Declaration = 0 );
 
       /**
        * recursively write a DOM to xml
@@ -38,7 +37,7 @@ namespace XmlCmd
        * @param type Node name (including namespace prefix)
        * @param text text portion of the node. Will be xml encoded.
        */
-      void AppendChildNode( ::rapidxml::xml_node<>* Parent, const char* type, const ::std::string& text );
+      ::rapidxml::xml_node<>* AppendChildNode( ::rapidxml::xml_node<>* Parent, const char* type, const ::std::string& text );
       
       /**
        * Create and append a child node to the given parent.

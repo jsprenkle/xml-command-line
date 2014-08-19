@@ -4,13 +4,14 @@
  *
  * Created on June 30, 2014
  */
-//#include <assert.h>
+#include <string.h>
+
 #include "XmlCmd.Document.h"
 #include <rapidxml_print.hpp>
 
 namespace XmlCmd
 {
-   Document::Document( const char* NamespaceString, const char* prefix, const char* Declaration )
+   Document::Document( const char* NamespaceString, const char* prefix, const char* type, const char* Declaration )
       : Declaration( Declaration )
       , prefix( prefix )
    {
@@ -21,8 +22,15 @@ namespace XmlCmd
       append_node( decl );
 
       // root node
-      root = allocate_node( ::rapidxml::node_element, PrefixType( "FileSystem" ) );
-      root->append_attribute( allocate_attribute( "xmlns:ns", NamespaceString ) );
+      root = allocate_node( ::rapidxml::node_element, PrefixType( type ) );
+
+      ::std::string temp( "xmlns" );
+      if ( ::strlen( prefix ) != 0 )
+      {
+         temp.append( ":" );
+         temp.append( prefix );
+      }
+      root->append_attribute( allocate_attribute( allocate_string( temp.c_str(), temp.size()+1 ), NamespaceString ) );
       append_node( root );
    }
 
@@ -48,12 +56,14 @@ namespace XmlCmd
       return ChildElement;
    }
    
-   void Document::AppendChildNode( ::rapidxml::xml_node<>* Parent, const char* type, const ::std::string& text )
+   ::rapidxml::xml_node<>* Document::AppendChildNode( ::rapidxml::xml_node<>* Parent, const char* type, const ::std::string& text )
    {
-      ::rapidxml::xml_node<>* ChildElement = allocate_node( ::rapidxml::node_element, PrefixType( type ) );
+      ::rapidxml::xml_node<>* ChildElement = AppendChildNode( Parent, type );
+
       ::std::string temp = encode( text );
       ChildElement->value( allocate_string( temp.c_str(), temp.size() ), temp.size() );
-      Parent->append_node( ChildElement );
+      
+      return ChildElement;
    }
    
    void Document::AppendAttribute( ::rapidxml::xml_node<>* Parent, const char* AttributeName, const ::std::string& AttributeValue )
