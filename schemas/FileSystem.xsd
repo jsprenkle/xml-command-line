@@ -1,114 +1,174 @@
 <?xml version="1.0" encoding="us-ascii"?>
-!--  Xml schema for documenting a file system. Written by Jay Sprenkle   -->
-<xs:schema xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" elementFormDefault="qualified" targetNamespace="http://www.XmlCommandLine.org/FileSystem/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:complexType name="FileType" mixed="true">
+<xs:schema xmlns="http://www.XmlCommandLine.org/Image/1.0" elementFormDefault="qualified" targetNamespace="http://www.XmlCommandLine.org/Image/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Written by Jay Sprenkle</xs:documentation>
+    </xs:annotation>
+    <xs:complexType name="PixelType" >
+        <xs:attribute name="Sequence" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Sequence number to order Pixels." />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="r" type="xs:hexBinary">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Red component of pixel. Higher numbers are brighter. Valid values are 0 - (2^32 - 1)" />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="g" type="xs:hexBinary">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Green component of pixel. Higher numbers are brighter. Valid values are 0 - (2^32 - 1)" />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="b" type="xs:hexBinary">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Blue component of pixel. Higher numbers are brighter. Valid values are 0 - (2^32 - 1)" />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="a" type="xs:hexBinary">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Alpha component (Opacity) of pixel. Higher numbers are more opaque. Valid values are 0 - (2^32 - 1)" />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="RowType" >
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Pixel" type="PixelType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="Sequence" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Sequence number to order Pixels." />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Offset" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Offset of the row in pixels." />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="ContentType" mixed="false">
+        <xs:annotation>
+            <xs:appinfo>
+                <fieldInfo notes="Container for descriptions of content of an image" />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Layer" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Row" minOccurs="0" maxOccurs="unbounded" type="RowType" />
+                    </xs:sequence>
+                    <xs:attribute name="Sequence" type="xs:nonNegativeInteger" use="required">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <fieldInfo notes="Sequence number to order layers. Lower numbered layers are below higher numbered layers" />
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Width" type="xs:nonNegativeInteger" use="required">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <fieldInfo notes="Width in pixels." />
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Height" type="xs:nonNegativeInteger" use="required">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <fieldInfo notes="Height in pixels." />
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ContextType" mixed="false">
+        <xs:annotation>
+            <xs:appinfo>
+                <fieldInfo notes="Container for description of context of an operation" />
+            </xs:appinfo>
+        </xs:annotation>
         <xs:sequence>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
-                <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1" >
-                    <xs:annotation>
-                        <xs:appinfo>
-                            <fieldInfo notes="Name of the File not including the path" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
-                        </xs:appinfo>
-                    </xs:annotation>
+                <xs:element name="Creation">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Notes" type="xs:string" >
+                                <xs:annotation>
+                                    <xs:appinfo>
+                                        <fieldInfo notes="Free form notes about creation of the document" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
+                                    </xs:appinfo>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="Source">
+                                <xs:annotation>
+                                    <xs:appinfo>
+                                        <fieldInfo notes="Source program that created this document" />
+                                    </xs:appinfo>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="args" type="xs:string">
+                                            <xs:annotation>
+                                                <xs:appinfo>
+                                                    <fieldInfo notes="command line arguments to Source program" />
+                                                </xs:appinfo>
+                                            </xs:annotation>
+                                        </xs:element>
+
+                                        <xs:element name="User" type="xs:string">
+                                            <xs:annotation>
+                                                <xs:appinfo>
+                                                    <fieldInfo notes="User Source program was executed under" />
+                                                </xs:appinfo>
+                                            </xs:annotation>
+                                        </xs:element>
+                                        <xs:element name="Host" type="xs:string">
+                                            <xs:annotation>
+                                                <xs:appinfo>
+                                                    <fieldInfo notes="Host name of computer source program was executed on" />
+                                                </xs:appinfo>
+                                            </xs:annotation>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="Name" type="xs:string" />
+                                    <xs:attribute name="Version" type="xs:string" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Created" type="xs:dateTime" />
+                    </xs:complexType>
                 </xs:element>
-                <xs:element name="Path" type="xs:string" minOccurs="1" maxOccurs="1" >
-                    <xs:annotation>
-                        <xs:appinfo>
-                            <fieldInfo notes="Path of the file" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
-                        </xs:appinfo>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="Owner" type="xs:string" minOccurs="0" maxOccurs="1" >
-                    <xs:annotation>
-                        <xs:appinfo>
-                            <fieldInfo notes="Owner of the File as a human readable string" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
-                        </xs:appinfo>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="GroupOwner" type="xs:string" minOccurs="0" maxOccurs="1" >
-                    <xs:annotation>
-                        <xs:appinfo>
-                            <fieldInfo notes="Group Owner of the File as a human readable string" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
-                        </xs:appinfo>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="Permissions" type="xs:hexBinary" minOccurs="0" maxOccurs="1" >
-                    <xs:annotation>
-                        <xs:appinfo>
-                            <fieldInfo notes="Permissions of the File in hex binary" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
-                        </xs:appinfo>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="CreationDateTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" />
-                <xs:element name="LastReadDateTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" />
-                <xs:element name="LastChangeDateTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" />
-                <xs:element name="Size" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1" />
             </xs:choice>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="DirectoryType" mixed="true">
+    <xs:complexType name="ImageType" mixed="false">
         <xs:sequence>
-            <!--  Permit any of these tags in any order in any number     -->
             <xs:choice minOccurs="0" maxOccurs="unbounded">
-
-                <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1" >
-                    <xs:annotation>
-                        <xs:appinfo>
-                            <fieldInfo notes="Name of the Directory not including the path" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
-                        </xs:appinfo>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="Path" type="xs:string" minOccurs="1" maxOccurs="1" >
-                    <xs:annotation>
-                        <xs:appinfo>
-                            <fieldInfo notes="Path of the file" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
-                        </xs:appinfo>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="Owner" type="xs:string" minOccurs="0" maxOccurs="1" >
-                    <xs:annotation>
-                        <xs:appinfo>
-                            <fieldInfo notes="Owner of the Directory as a human readable string" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
-                        </xs:appinfo>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="GroupOwner" type="xs:string" minOccurs="0" maxOccurs="1" >
-                    <xs:annotation>
-                        <xs:appinfo>
-                            <fieldInfo notes="Group Owner of the Directory as a human readable string" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
-                        </xs:appinfo>
-                    </xs:annotation>
-                </xs:element>
-                <xs:element name="Permissions" type="xs:hexBinary" minOccurs="0" maxOccurs="1" >
-                    <xs:annotation>
-                        <xs:appinfo>
-                            <fieldInfo notes="Permissions of the Directory in hex binary" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
-                        </xs:appinfo>
-                    </xs:annotation>
-                </xs:element>
-            
-                <xs:element name="Directory" type="DirectoryType" />
-                <xs:element name="File" type="FileType" />
+                <xs:element name="Content" type="ContentType" minOccurs="0" maxOccurs="1" />
+                <xs:element name="Context" type="ContextType" minOccurs="0" maxOccurs="1" />
             </xs:choice>
         </xs:sequence>
-
     </xs:complexType>
-
-    <xs:element name="FileSystem">
-        <xs:complexType>
-            <xs:sequence>
-                <!--  Permit any of these tags in any order in any number     -->
-                <xs:choice minOccurs="0" maxOccurs="unbounded">
-                    <xs:element name="Directory" minOccurs="0" maxOccurs="1">
-                        <xs:complexType>
-                            <xs:complexContent mixed="true">
-                                <xs:extension base="DirectoryType" />
-                            </xs:complexContent>
-                        </xs:complexType>
-                    </xs:element>
-                </xs:choice>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+  
+    <xs:element name="Image" type="ImageType" />
 </xs:schema>
