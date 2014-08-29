@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="89">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>config.h</itemPath>
+      <itemPath>jchuff.h</itemPath>
+      <itemPath>jconfig.h</itemPath>
+      <itemPath>jdct.h</itemPath>
+      <itemPath>jerror.h</itemPath>
+      <itemPath>jinclude.h</itemPath>
+      <itemPath>jmemsys.h</itemPath>
+      <itemPath>jmorecfg.h</itemPath>
+      <itemPath>jpegcomp.h</itemPath>
+      <itemPath>jpegint.h</itemPath>
+      <itemPath>jpeglib.h</itemPath>
+      <itemPath>jsimd.h</itemPath>
+      <itemPath>jsimddct.h</itemPath>
+      <itemPath>jversion.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>jcapimin.c</itemPath>
+      <itemPath>jcapistd.c</itemPath>
+      <itemPath>jccoefct.c</itemPath>
+      <itemPath>jccolor.c</itemPath>
+      <itemPath>jcdctmgr.c</itemPath>
+      <itemPath>jchuff.c</itemPath>
+      <itemPath>jcinit.c</itemPath>
+      <itemPath>jcmainct.c</itemPath>
+      <itemPath>jcmarker.c</itemPath>
+      <itemPath>jcmaster.c</itemPath>
+      <itemPath>jcomapi.c</itemPath>
+      <itemPath>jcparam.c</itemPath>
+      <itemPath>jcphuff.c</itemPath>
+      <itemPath>jcprepct.c</itemPath>
+      <itemPath>jcsample.c</itemPath>
+      <itemPath>jdatadst.c</itemPath>
+      <itemPath>jerror.c</itemPath>
+      <itemPath>jfdctflt.c</itemPath>
+      <itemPath>jfdctfst.c</itemPath>
+      <itemPath>jfdctint.c</itemPath>
+      <itemPath>jmemmgr.c</itemPath>
+      <itemPath>jmemnobs.c</itemPath>
+      <itemPath>jsimd_none.c</itemPath>
+      <itemPath>jutils.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jcapimin.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcapistd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jccoefct.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jccolor.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcdctmgr.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jchuff.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jchuff.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jcinit.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcmainct.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcmarker.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcmaster.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcomapi.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jconfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jcparam.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcphuff.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcprepct.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcsample.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jdatadst.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jdct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jerror.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jerror.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jfdctflt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jfdctfst.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jfdctint.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jinclude.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jmemmgr.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jmemnobs.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jmemsys.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jmorecfg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jpegcomp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jpegint.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jpeglib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jsimd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jsimd_none.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jsimddct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jutils.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jversion.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jcapimin.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcapistd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jccoefct.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jccolor.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcdctmgr.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jchuff.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jchuff.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jcinit.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcmainct.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcmarker.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcmaster.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcomapi.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jconfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jcparam.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcphuff.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcprepct.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcsample.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jdatadst.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jdct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jerror.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jerror.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jfdctflt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jfdctfst.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jfdctint.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jinclude.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jmemmgr.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jmemnobs.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jmemsys.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jmorecfg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jpegcomp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jpegint.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jpeglib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jsimd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jsimd_none.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jsimddct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jutils.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jversion.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Linux_Release" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jcapimin.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcapistd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jccoefct.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jccolor.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcdctmgr.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jchuff.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jchuff.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jcinit.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcmainct.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcmarker.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcmaster.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcomapi.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jconfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jcparam.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcphuff.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcprepct.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jcsample.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jdatadst.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jdct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jerror.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jerror.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jfdctflt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jfdctfst.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jfdctint.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jinclude.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jmemmgr.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jmemnobs.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jmemsys.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jmorecfg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jpegcomp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jpegint.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jpeglib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jsimd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jsimd_none.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jsimddct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jutils.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="jversion.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
