@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<xs:schema xmlns="http://www.XmlCommandLine.org/Image/1.0" elementFormDefault="qualified" targetNamespace="http://www.XmlCommandLine.org/Image/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Written by Jay Sprenkle</xs:documentation>
+    </xs:annotation>
+
+    <xs:complexType name="PixelType" >
+        <xs:attribute name="x" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Index number defines the order Pixels are displayed." />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="r" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Red component of pixel. Higher numbers are brighter. Valid values are 0 - (2^32 - 1)" />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="g" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Green component of pixel. Higher numbers are brighter. Valid values are 0 - (2^32 - 1)" />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="b" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Blue component of pixel. Higher numbers are brighter. Valid values are 0 - (2^32 - 1)" />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="a" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Alpha component (Opacity) of pixel. Higher numbers are more opaque. Valid values are 0 - (2^32 - 1)" />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="RowType" >
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Pixel" type="PixelType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="y" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:appinfo>
+                    <fieldInfo notes="Index number defines the order rows are displayed. Row zero is at the top of the image." />
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="ContentType" mixed="false">
+        <xs:annotation>
+            <xs:appinfo>
+                <fieldInfo notes="Container for content of the image" />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Layer" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Row" minOccurs="0" maxOccurs="unbounded" type="RowType" />
+                    </xs:sequence>
+                    
+                    <xs:attribute name="z" type="xs:nonNegativeInteger" use="required">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <fieldInfo notes="Index number to order layers. Lower numbered layers are below higher numbered layers" />
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Width" type="xs:nonNegativeInteger" use="required">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <fieldInfo notes="Width in pixels." />
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Height" type="xs:nonNegativeInteger" use="required">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <fieldInfo notes="Height in pixels." />
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ContextType" mixed="false">
+        <xs:annotation>
+            <xs:appinfo>
+                <fieldInfo notes="Container for description of context of an operation" />
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                
+                <xs:element name="Create">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Notes" type="xs:string" >
+                                <xs:annotation>
+                                    <xs:appinfo>
+                                        <fieldInfo notes="Free form notes about creation of the document" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
+                                    </xs:appinfo>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="Source">
+                                <xs:annotation>
+                                    <xs:appinfo>
+                                        <fieldInfo notes="Source program that created this document" />
+                                    </xs:appinfo>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="args" type="xs:string">
+                                            <xs:annotation>
+                                                <xs:appinfo>
+                                                    <fieldInfo notes="command line arguments to Source program" />
+                                                </xs:appinfo>
+                                            </xs:annotation>
+                                        </xs:element>
+
+                                        <xs:element name="User" type="xs:string">
+                                            <xs:annotation>
+                                                <xs:appinfo>
+                                                    <fieldInfo notes="User Source program was executed under" />
+                                                </xs:appinfo>
+                                            </xs:annotation>
+                                        </xs:element>
+                                        <xs:element name="Host" type="xs:string">
+                                            <xs:annotation>
+                                                <xs:appinfo>
+                                                    <fieldInfo notes="Host name of computer source program was executed on" />
+                                                </xs:appinfo>
+                                            </xs:annotation>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="Name" type="xs:string" />
+                                    <xs:attribute name="Version" type="xs:string" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Created" type="xs:dateTime" />
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Update">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Notes" type="xs:string" >
+                                <xs:annotation>
+                                    <xs:appinfo>
+                                        <fieldInfo notes="Free form notes about creation of the document" xmlns="http://www.XmlCommandLine.org/FileSystem/1.0" />
+                                    </xs:appinfo>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="Source">
+                                <xs:annotation>
+                                    <xs:appinfo>
+                                        <fieldInfo notes="Source program that created this document" />
+                                    </xs:appinfo>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="args" type="xs:string">
+                                            <xs:annotation>
+                                                <xs:appinfo>
+                                                    <fieldInfo notes="command line arguments to Source program" />
+                                                </xs:appinfo>
+                                            </xs:annotation>
+                                        </xs:element>
+
+                                        <xs:element name="User" type="xs:string">
+                                            <xs:annotation>
+                                                <xs:appinfo>
+                                                    <fieldInfo notes="User Source program was executed under" />
+                                                </xs:appinfo>
+                                            </xs:annotation>
+                                        </xs:element>
+                                        <xs:element name="Host" type="xs:string">
+                                            <xs:annotation>
+                                                <xs:appinfo>
+                                                    <fieldInfo notes="Host name of computer source program was executed on" />
+                                                </xs:appinfo>
+                                            </xs:annotation>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="Name" type="xs:string" />
+                                    <xs:attribute name="Version" type="xs:string" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Updated" type="xs:dateTime" />
+                    </xs:complexType>
+                </xs:element>
+
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ImageType" mixed="false">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Content" type="ContentType" minOccurs="0" maxOccurs="1" />
+                <xs:element name="Context" type="ContextType" minOccurs="0" maxOccurs="1" />
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+  
+    <xs:element name="Image" type="ImageType" />
+</xs:schema>
