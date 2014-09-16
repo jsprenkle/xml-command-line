@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Config xmlns="http://www.XmlCommandLine.org/XmlCmdMake/1.0">
+    <Content>true</Content>
+    <Width>128</Width>
+    <Height>128</Height>
+    <Pixel r="0" g="0" b="0" a="4294967295" />
+</Config>
