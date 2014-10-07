@@ -35,8 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/File.Reader.o \
-	${OBJECTDIR}/File.Writer.o \
 	${OBJECTDIR}/XmlCmdImageToPng.Config.Reader.o \
 	${OBJECTDIR}/XmlCmdImageToPng.Config.Settings.o \
 	${OBJECTDIR}/XmlCmdImageToPng.Convert.o \
@@ -47,8 +45,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-flto -flto-partition=none
+CXXFLAGS=-flto -flto-partition=none
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -69,37 +67,27 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng: ../XmlCmd/dist/Rele
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/File.Reader.o: File.Reader.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -MMD -MP -MF $@.d -o ${OBJECTDIR}/File.Reader.o File.Reader.cpp
-
-${OBJECTDIR}/File.Writer.o: File.Writer.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -MMD -MP -MF $@.d -o ${OBJECTDIR}/File.Writer.o File.Writer.cpp
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng ${OBJECTFILES} ${LDLIBSOPTIONS} -flto -flto-partition=none -s
 
 ${OBJECTDIR}/XmlCmdImageToPng.Config.Reader.o: XmlCmdImageToPng.Config.Reader.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageToPng.Config.Reader.o XmlCmdImageToPng.Config.Reader.cpp
+	$(COMPILE.cc) -O2 -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -flto -flto-partition=none -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageToPng.Config.Reader.o XmlCmdImageToPng.Config.Reader.cpp
 
 ${OBJECTDIR}/XmlCmdImageToPng.Config.Settings.o: XmlCmdImageToPng.Config.Settings.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageToPng.Config.Settings.o XmlCmdImageToPng.Config.Settings.cpp
+	$(COMPILE.cc) -O2 -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -flto -flto-partition=none -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageToPng.Config.Settings.o XmlCmdImageToPng.Config.Settings.cpp
 
 ${OBJECTDIR}/XmlCmdImageToPng.Convert.o: XmlCmdImageToPng.Convert.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageToPng.Convert.o XmlCmdImageToPng.Convert.cpp
+	$(COMPILE.cc) -O2 -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -flto -flto-partition=none -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageToPng.Convert.o XmlCmdImageToPng.Convert.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -flto -flto-partition=none -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

@@ -28,8 +28,9 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}" "${OUTPUT_PATH}" XmlCmdMake.Example.xml</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" -c XmlCmdImageToPng.Config.xml XmlCmdMake.Example.xml</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" XmlCmdGradient.Example.xml Example.png</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" -c XmlCmdImageToPng.Config.xml XmlCmdGradient.Example.xml Example.png</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" XmlCmdGradient.Example.xml Example.png</runcommand>
+        <runcommand>"${OUTPUT_PATH}" -c XmlCmdImageToPng.Config.xml XmlCmdGradient.Example.xml Example.png</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>

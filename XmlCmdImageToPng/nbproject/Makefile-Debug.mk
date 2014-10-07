@@ -35,8 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/File.Reader.o \
-	${OBJECTDIR}/File.Writer.o \
 	${OBJECTDIR}/XmlCmdImageToPng.Config.Reader.o \
 	${OBJECTDIR}/XmlCmdImageToPng.Config.Settings.o \
 	${OBJECTDIR}/XmlCmdImageToPng.Convert.o \
@@ -57,7 +55,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../lodepng/dist/Debug/GNU-Linux-x86/liblodepng.a ../XmlCmd/dist/Release/GNU-Linux-x86/libxmlcmd.a
+LDLIBSOPTIONS=../lodepng/dist/Debug/GNU-Linux-x86/liblodepng.a ../XmlCmd/dist/Debug/GNU-Linux-x86/libxmlcmd.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -65,21 +63,11 @@ LDLIBSOPTIONS=../lodepng/dist/Debug/GNU-Linux-x86/liblodepng.a ../XmlCmd/dist/Re
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng: ../lodepng/dist/Debug/GNU-Linux-x86/liblodepng.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng: ../XmlCmd/dist/Release/GNU-Linux-x86/libxmlcmd.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng: ../XmlCmd/dist/Debug/GNU-Linux-x86/libxmlcmd.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/File.Reader.o: File.Reader.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -MMD -MP -MF $@.d -o ${OBJECTDIR}/File.Reader.o File.Reader.cpp
-
-${OBJECTDIR}/File.Writer.o: File.Writer.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -MMD -MP -MF $@.d -o ${OBJECTDIR}/File.Writer.o File.Writer.cpp
 
 ${OBJECTDIR}/XmlCmdImageToPng.Config.Reader.o: XmlCmdImageToPng.Config.Reader.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -104,7 +92,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Subprojects
 .build-subprojects:
 	cd ../lodepng && ${MAKE}  -f Makefile CONF=Debug
-	cd ../XmlCmd && ${MAKE}  -f Makefile CONF=Release
+	cd ../XmlCmd && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -114,7 +102,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Subprojects
 .clean-subprojects:
 	cd ../lodepng && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../XmlCmd && ${MAKE}  -f Makefile CONF=Release clean
+	cd ../XmlCmd && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

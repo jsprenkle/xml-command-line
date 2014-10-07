@@ -22,12 +22,10 @@
 
 #include <rapidxml.hpp>
 
-#include "conversion.h"
-
 #include "File.Reader.h"
 #include "File.Writer.h"
 #include "XmlCmdImageToPng.Config.Settings.h"
-#include "XmlCmd.Document.h"
+#include "XmlCmd.h"
 
 namespace XmlCmdImageToPng
 {

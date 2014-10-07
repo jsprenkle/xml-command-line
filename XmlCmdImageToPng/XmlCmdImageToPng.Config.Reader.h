@@ -9,6 +9,7 @@
 #ifndef XMLCMDIMAGETOPNG_CONFIG_READER_H
 #define	XMLCMDIMAGETOPNG_CONFIG_READER_H
 
+#include <XmlCmd.h>
 #include "XmlCmdImageToPng.Config.Settings.h"
 
 namespace XmlCmdImageToPng
@@ -16,15 +17,12 @@ namespace XmlCmdImageToPng
    namespace Config
    {
       class Reader
+         : public ::XmlCmd::DocumentReader
       {
       public:
          Reader( const char* FileName );
-         ~Reader();
          
          Settings Parse();
-         
-      private:
-         char* buffer;
       };
    }
 }

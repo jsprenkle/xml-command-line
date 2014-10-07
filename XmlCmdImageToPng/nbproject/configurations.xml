@@ -4,8 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>File.Reader.h</itemPath>
-      <itemPath>File.Writer.h</itemPath>
       <itemPath>XmlCmdImageToPng.Config.Reader.h</itemPath>
       <itemPath>XmlCmdImageToPng.Config.Settings.h</itemPath>
       <itemPath>XmlCmdImageToPng.Convert.h</itemPath>
@@ -17,8 +15,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>File.Reader.cpp</itemPath>
-      <itemPath>File.Writer.cpp</itemPath>
       <itemPath>XmlCmdImageToPng.Config.Reader.cpp</itemPath>
       <itemPath>XmlCmdImageToPng.Config.Settings.cpp</itemPath>
       <itemPath>XmlCmdImageToPng.Convert.cpp</itemPath>
@@ -72,26 +68,18 @@
             <linkerLibProjectItem>
               <makeArtifact PL="../XmlCmd"
                             CT="3"
-                            CN="Release"
+                            CN="Debug"
                             AC="true"
                             BL="true"
                             WD="../XmlCmd"
-                            BC="${MAKE}  -f Makefile CONF=Release"
-                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmd.a">
               </makeArtifact>
             </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="File.Reader.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="File.Reader.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="File.Writer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="File.Writer.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="XmlCmdImageToPng.Config.Reader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="XmlCmdImageToPng.Config.Reader.h" ex="false" tool="3" flavor2="0">
@@ -128,6 +116,7 @@
             <pElem>../rapidxml-1.13</pElem>
             <pElem>../XmlCmd</pElem>
           </incDir>
+          <commandLine>-flto -flto-partition=none</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -137,6 +126,7 @@
         </asmTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng</output>
+          <stripSymbols>true</stripSymbols>
           <linkerLibItems>
             <linkerLibProjectItem>
               <makeArtifact PL="../lodepng"
@@ -163,16 +153,9 @@
               </makeArtifact>
             </linkerLibProjectItem>
           </linkerLibItems>
+          <commandLine>-flto -flto-partition=none</commandLine>
         </linkerTool>
       </compileType>
-      <item path="File.Reader.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="File.Reader.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="File.Writer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="File.Writer.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="XmlCmdImageToPng.Config.Reader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="XmlCmdImageToPng.Config.Reader.h" ex="false" tool="3" flavor2="0">
@@ -208,6 +191,7 @@
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng</output>
+          <stripSymbols>true</stripSymbols>
           <linkerLibItems>
             <linkerLibProjectItem>
               <makeArtifact PL="../lodepng"
@@ -236,14 +220,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="File.Reader.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="File.Reader.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="File.Writer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="File.Writer.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="XmlCmdImageToPng.Config.Reader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="XmlCmdImageToPng.Config.Reader.h" ex="false" tool="3" flavor2="0">

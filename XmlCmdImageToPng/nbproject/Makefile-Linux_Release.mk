@@ -35,8 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/File.Reader.o \
-	${OBJECTDIR}/File.Writer.o \
 	${OBJECTDIR}/XmlCmdImageToPng.Config.Reader.o \
 	${OBJECTDIR}/XmlCmdImageToPng.Config.Settings.o \
 	${OBJECTDIR}/XmlCmdImageToPng.Convert.o \
@@ -69,17 +67,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng: ../XmlCmd/dist/Linu
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/File.Reader.o: File.Reader.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -MMD -MP -MF $@.d -o ${OBJECTDIR}/File.Reader.o File.Reader.cpp
-
-${OBJECTDIR}/File.Writer.o: File.Writer.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I../lodepng -I../rapidxml-1.13 -I../XmlCmd -MMD -MP -MF $@.d -o ${OBJECTDIR}/File.Writer.o File.Writer.cpp
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToPng ${OBJECTFILES} ${LDLIBSOPTIONS} -s
 
 ${OBJECTDIR}/XmlCmdImageToPng.Config.Reader.o: XmlCmdImageToPng.Config.Reader.cpp 
 	${MKDIR} -p ${OBJECTDIR}
