@@ -35,16 +35,18 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/XmlCmd.Base64.o \
-	${OBJECTDIR}/XmlCmd.Document.o
+	${OBJECTDIR}/File.Reader.o \
+	${OBJECTDIR}/File.Writer.o \
+	${OBJECTDIR}/XmlCmd.Document.o \
+	${OBJECTDIR}/XmlCmd.DocumentReader.o
 
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-flto -flto-partition=none
+CXXFLAGS=-flto -flto-partition=none
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -65,15 +67,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmd.a: ${OBJECTFILES}
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmd.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmd.a
 
-${OBJECTDIR}/XmlCmd.Base64.o: XmlCmd.Base64.cpp 
+${OBJECTDIR}/File.Reader.o: File.Reader.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmd.Base64.o XmlCmd.Base64.cpp
+	$(COMPILE.cc) -O2 -I. -I../rapidxml-1.13 -flto -flto-partition=none -MMD -MP -MF $@.d -o ${OBJECTDIR}/File.Reader.o File.Reader.cpp
+
+${OBJECTDIR}/File.Writer.o: File.Writer.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -I../rapidxml-1.13 -flto -flto-partition=none -MMD -MP -MF $@.d -o ${OBJECTDIR}/File.Writer.o File.Writer.cpp
 
 ${OBJECTDIR}/XmlCmd.Document.o: XmlCmd.Document.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmd.Document.o XmlCmd.Document.cpp
+	$(COMPILE.cc) -O2 -I. -I../rapidxml-1.13 -flto -flto-partition=none -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmd.Document.o XmlCmd.Document.cpp
+
+${OBJECTDIR}/XmlCmd.DocumentReader.o: XmlCmd.DocumentReader.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -I../rapidxml-1.13 -flto -flto-partition=none -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmd.DocumentReader.o XmlCmd.DocumentReader.cpp
 
 # Subprojects
 .build-subprojects:

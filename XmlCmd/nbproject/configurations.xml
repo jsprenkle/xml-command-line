@@ -4,10 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>XmlCmd.Base64.h</itemPath>
+      <itemPath>File.Reader.h</itemPath>
+      <itemPath>File.Writer.h</itemPath>
       <itemPath>XmlCmd.Document.h</itemPath>
+      <itemPath>XmlCmd.DocumentReader.h</itemPath>
       <itemPath>XmlCmd.h</itemPath>
-      <itemPath>XmlCmdConversion.h</itemPath>
+      <itemPath>conversion.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -16,8 +18,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>XmlCmd.Base64.cpp</itemPath>
+      <itemPath>File.Reader.cpp</itemPath>
+      <itemPath>File.Writer.cpp</itemPath>
       <itemPath>XmlCmd.Document.cpp</itemPath>
+      <itemPath>XmlCmd.DocumentReader.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -50,17 +54,25 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="XmlCmd.Base64.cpp" ex="false" tool="1" flavor2="0">
+      <item path="File.Reader.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="XmlCmd.Base64.h" ex="false" tool="3" flavor2="0">
+      <item path="File.Reader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="File.Writer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="File.Writer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="XmlCmd.Document.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="XmlCmd.Document.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="XmlCmd.DocumentReader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmd.DocumentReader.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="XmlCmd.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="XmlCmdConversion.h" ex="false" tool="3" flavor2="0">
+      <item path="conversion.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -80,6 +92,7 @@
             <pElem>.</pElem>
             <pElem>../rapidxml-1.13</pElem>
           </incDir>
+          <commandLine>-flto -flto-partition=none</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -90,17 +103,25 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="XmlCmd.Base64.cpp" ex="false" tool="1" flavor2="0">
+      <item path="File.Reader.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="XmlCmd.Base64.h" ex="false" tool="3" flavor2="0">
+      <item path="File.Reader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="File.Writer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="File.Writer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="XmlCmd.Document.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="XmlCmd.Document.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="XmlCmd.DocumentReader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmd.DocumentReader.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="XmlCmd.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="XmlCmdConversion.h" ex="false" tool="3" flavor2="0">
+      <item path="conversion.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Linux_Debug" type="3">
@@ -120,17 +141,25 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="XmlCmd.Base64.cpp" ex="false" tool="1" flavor2="0">
+      <item path="File.Reader.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="XmlCmd.Base64.h" ex="false" tool="3" flavor2="0">
+      <item path="File.Reader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="File.Writer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="File.Writer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="XmlCmd.Document.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="XmlCmd.Document.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="XmlCmd.DocumentReader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmd.DocumentReader.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="XmlCmd.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="XmlCmdConversion.h" ex="false" tool="3" flavor2="0">
+      <item path="conversion.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Linux_Release" type="3">
@@ -150,17 +179,25 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="XmlCmd.Base64.cpp" ex="false" tool="1" flavor2="0">
+      <item path="File.Reader.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="XmlCmd.Base64.h" ex="false" tool="3" flavor2="0">
+      <item path="File.Reader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="File.Writer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="File.Writer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="XmlCmd.Document.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="XmlCmd.Document.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="XmlCmd.DocumentReader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmd.DocumentReader.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="XmlCmd.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="XmlCmdConversion.h" ex="false" tool="3" flavor2="0">
+      <item path="conversion.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

@@ -6,6 +6,9 @@
  */
 #include <string.h>
 
+#include <stdexcept>
+
+#include "conversion.h"
 #include "XmlCmd.Document.h"
 #include <rapidxml_print.hpp>
 
@@ -32,6 +35,49 @@ namespace XmlCmd
       }
       root->append_attribute( allocate_attribute( allocate_string( temp.c_str(), temp.size()+1 ), NamespaceString ) );
       append_node( root );
+   }
+   
+   void Document::ValidateRootNode( const char* NodeName, const ::std::string& XmlNamespace )
+   {
+      root = first_node();
+      if ( ! root )
+         throw ::std::runtime_error( "No root node in document" );
+      
+      // check the node name and namespace
+      ::std::string XmlNamespaceAttribName( "xmlns" );
+
+      // get the namespace prefix (if present)
+      ::std::string RootNodeName( root->name(), root->name_size() );
+      size_t separator = RootNodeName.find( ":" );
+      if ( separator != ::std::string::npos )
+      {
+         // extract text prefix
+         XmlNamespacePrefix.assign( RootNodeName.c_str(), separator );
+
+         // create attribute name
+         XmlNamespaceAttribName.append( ":" );
+         XmlNamespaceAttribName.append( XmlNamespacePrefix );
+
+         // fix prefix for use with nodes
+         XmlNamespacePrefix.append( ":" );
+
+         // remove cruft from root node
+         RootNodeName.erase( 0, separator + 1 );
+      }
+
+      if ( RootNodeName != NodeName )
+         throw ::std::runtime_error( "Invalid root node name" );
+
+      if ( ! XmlNamespace.empty() )
+      {
+         ::rapidxml::xml_attribute<>* nsattr = root->first_attribute( XmlNamespaceAttribName.c_str() );
+         if ( !nsattr )
+            throw ::std::runtime_error( "Invalid document. no namespace" );
+
+         ::std::string NameSpaceAttribute( nsattr->value(), nsattr->value_size() );
+         if ( NameSpaceAttribute != XmlNamespace ) 
+            throw ::std::runtime_error( "Invalid namespace" );
+      }
    }
 
    const char* Document::PrefixType( const char* type )
@@ -101,5 +147,24 @@ namespace XmlCmd
          }
       }
       return buffer;
+   }
+
+   ::std::string Document::ReadNode( ::rapidxml::xml_node<>* current_node, const ::std::string& XmlNamespacePrefix, const char* NodeName, const char* DefaultValue )
+   {
+      ::std::string XmlNodeName( XmlNamespacePrefix );
+      XmlNodeName.append( NodeName );
+      ::rapidxml::xml_node<>* Nodefound;
+      Nodefound = current_node->first_node( XmlNodeName.c_str() );
+      if ( Nodefound )
+         return ::std::string( Nodefound->value(), Nodefound->value_size() );
+      return ::std::string( DefaultValue );
+   }
+   
+   uint32_t ReadNumericAttribute( ::rapidxml::xml_node<>* Node, const char* name )
+   {
+      ::rapidxml::xml_attribute<>* attr = Node->first_attribute( name );
+      if ( attr )
+         return stringTo< uint32_t >( ::std::string( attr->value(), attr->value_size() ) );
+      return 0;
    }
 }
