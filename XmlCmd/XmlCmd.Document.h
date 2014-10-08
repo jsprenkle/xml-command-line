@@ -54,6 +54,12 @@ namespace XmlCmd
        */
       ::rapidxml::xml_node<>* AppendChildNode( ::rapidxml::xml_node<>* Parent, const char* type );
       
+      /**
+       * Add an attribute to a given parent node
+       * @param Parent
+       * @param AttributeName
+       * @param AttributeValue
+       */
       void AppendAttribute( ::rapidxml::xml_node<>* Parent, const char* AttributeName, const ::std::string& AttributeValue );
       
       const char* PrefixType( const char* type );
@@ -70,11 +76,9 @@ namespace XmlCmd
        */
       static ::std::string ReadNode( ::rapidxml::xml_node<>* current_node, const ::std::string& XmlNamespacePrefix, const char* NodeName, const char* DefaultValue = "" );
       
-      static uint32_t ReadNumericAttribute( ::rapidxml::xml_node<>* Node, const char* name );
-
       ::rapidxml::xml_node<>* root;
       
-      /** the name space prefix of the document. i.e.   ns0:Blar */
+      /** the name space prefix of the document. i.e.   ns0:BlarMatey */
       ::std::string XmlNamespacePrefix;
    private:
 

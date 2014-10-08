@@ -159,12 +159,4 @@ namespace XmlCmd
          return ::std::string( Nodefound->value(), Nodefound->value_size() );
       return ::std::string( DefaultValue );
    }
-   
-   uint32_t ReadNumericAttribute( ::rapidxml::xml_node<>* Node, const char* name )
-   {
-      ::rapidxml::xml_attribute<>* attr = Node->first_attribute( name );
-      if ( attr )
-         return stringTo< uint32_t >( ::std::string( attr->value(), attr->value_size() ) );
-      return 0;
-   }
 }

@@ -10,6 +10,7 @@
 #ifndef CONVERSION_H
 #define	CONVERSION_H
 
+#include <string>
 #include <sstream>
 
 //---------------------------------------------------------------------------

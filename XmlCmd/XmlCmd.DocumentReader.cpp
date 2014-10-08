@@ -1,5 +1,5 @@
 /* 
- * File:   XmlCmd.Config.Reader.cpp
+ * File:   XmlCmd.DocumentReader.cpp
  * Author: Jay Sprenkle
  *
  * Created on October 7, 2014
@@ -69,13 +69,19 @@ namespace XmlCmd
 
       Validate( RootNodeName, Namespace );
    }
+
+   DocumentReader::~DocumentReader()
+   {
+      if ( buffer )
+         delete [] buffer;
+   }
    
    void DocumentReader::Validate( const char* RootNodeName, const char* Namespace )
    {
       // <editor-fold defaultstate="collapsed" desc="validate the document">
       try
       {
-         doc.parse< ::rapidxml::parse_no_data_nodes | ::rapidxml::parse_trim_whitespace >( buffer );
+         parse< ::rapidxml::parse_no_data_nodes | ::rapidxml::parse_trim_whitespace >( buffer );
       }
       catch ( ::rapidxml::parse_error e )
       {
@@ -91,12 +97,14 @@ namespace XmlCmd
       // </editor-fold>
 
       // check the root node name and namespace
-      doc.ValidateRootNode( RootNodeName, Namespace );
+      ValidateRootNode( RootNodeName, Namespace );
    }
-
-   DocumentReader::~DocumentReader()
+   
+   uint32_t DocumentReader::ReadNumericAttribute( ::rapidxml::xml_node<>* Node, const char* name )
    {
-      if ( buffer )
-         delete [] buffer;
+      ::rapidxml::xml_attribute<>* attr = Node->first_attribute( name );
+      if ( attr )
+         return stringTo< uint32_t >( ::std::string( attr->value(), attr->value_size() ) );
+      return 0;
    }
 }
