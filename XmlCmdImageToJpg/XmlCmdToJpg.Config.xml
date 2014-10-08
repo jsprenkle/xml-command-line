@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Config xmlns="http://www.XmlCommandLine.org/XmlCmdToJpg/1.0">
+    <Quality>100</Quality>
+    <Content>true</Content>
+    <Comment>XmlCmdToJpg created this image</Comment>
+</Config>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="89">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>XmlCmdToJpg.Config.Reader.h</itemPath>
+      <itemPath>XmlCmdToJpg.Config.Settings.h</itemPath>
+      <itemPath>XmlCmdToJpg.File.Reader.h</itemPath>
+      <itemPath>XmlCmdToJpg.File.Writer.h</itemPath>
+      <itemPath>XmlCmdToJpg.ImageReader.h</itemPath>
+      <itemPath>XmlCmdToJpg.ImageWriter.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>XmlCmdToJpg.Config.Reader.cpp</itemPath>
+      <itemPath>XmlCmdToJpg.Config.Settings.cpp</itemPath>
+      <itemPath>XmlCmdToJpg.File.Reader.cpp</itemPath>
+      <itemPath>XmlCmdToJpg.File.Writer.cpp</itemPath>
+      <itemPath>XmlCmdToJpg.ImageReader.cpp</itemPath>
+      <itemPath>XmlCmdToJpg.ImageWriter.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+      <itemPath>XmlCmdMake.Example.xml</itemPath>
+      <itemPath>XmlCmdToJpg.Config.xml</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../rapidxml-1.13</pElem>
+            <pElem>../XmlCmd</pElem>
+            <pElem>../JpgLib</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToJpg</output>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../XmlCmd"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="true"
+                            WD="../XmlCmd"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmd.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../JpgLib"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="true"
+                            WD="../JpgLib"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libjpglib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="XmlCmdToJpg.Config.Reader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.Config.Reader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.Config.Settings.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.Config.Settings.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Reader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Reader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Writer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Writer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageReader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageReader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../rapidxml-1.13</pElem>
+            <pElem>../XmlCmd</pElem>
+            <pElem>../JpgLib</pElem>
+          </incDir>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdImageToJpg</output>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../XmlCmd"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="true"
+                            WD="../XmlCmd"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmd.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../JpgLib"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="true"
+                            WD="../JpgLib"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libjpglib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="XmlCmdToJpg.Config.Reader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.Config.Reader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.Config.Settings.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.Config.Settings.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Reader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Reader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Writer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Writer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageReader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageReader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Linux_Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../rapidxml-1.13</pElem>
+            <pElem>../XmlCmd</pElem>
+            <pElem>../JpgLib</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../XmlCmd"
+                            CT="3"
+                            CN="Linux_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../XmlCmd"
+                            BC="${MAKE}  -f Makefile CONF=Linux_Release"
+                            CC="${MAKE}  -f Makefile CONF=Linux_Release clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmd.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../JpgLib"
+                            CT="3"
+                            CN="Linux_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../JpgLib"
+                            BC="${MAKE}  -f Makefile CONF=Linux_Release"
+                            CC="${MAKE}  -f Makefile CONF=Linux_Release clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libjpglib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="XmlCmdToJpg.Config.Reader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.Config.Reader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.Config.Settings.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.Config.Settings.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Reader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Reader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Writer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.File.Writer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageReader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageReader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmdToJpg.ImageWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
