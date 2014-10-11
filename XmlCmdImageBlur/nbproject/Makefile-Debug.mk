@@ -38,9 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/XmlCmdImageBlur.App.o \
 	${OBJECTDIR}/XmlCmdImageBlur.Config.Reader.o \
 	${OBJECTDIR}/XmlCmdImageBlur.Config.Settings.o \
-	${OBJECTDIR}/XmlCmdImageBlur.Layer.o \
-	${OBJECTDIR}/XmlCmdImageBlur.Pixel.o \
-	${OBJECTDIR}/XmlCmdImageBlur.Row.o \
 	${OBJECTDIR}/main.o
 
 
@@ -58,13 +55,15 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../XmlCmd/dist/Debug/GNU-Linux-x86/libxmlcmd.a
+LDLIBSOPTIONS=../XmlCmd/dist/Debug/GNU-Linux-x86/libxmlcmd.a ../XmlCmdImage/dist/Debug/GNU-Linux-x86/libxmlcmdimage.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/xmlcmdimageblur
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/xmlcmdimageblur: ../XmlCmd/dist/Debug/GNU-Linux-x86/libxmlcmd.a
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/xmlcmdimageblur: ../XmlCmdImage/dist/Debug/GNU-Linux-x86/libxmlcmdimage.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/xmlcmdimageblur: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -73,41 +72,27 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/xmlcmdimageblur: ${OBJECTFILES}
 ${OBJECTDIR}/XmlCmdImageBlur.App.o: XmlCmdImageBlur.App.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.App.o XmlCmdImageBlur.App.cpp
+	$(COMPILE.cc) -g -I. -I../XmlCmd -I../XmlCmdImage -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.App.o XmlCmdImageBlur.App.cpp
 
 ${OBJECTDIR}/XmlCmdImageBlur.Config.Reader.o: XmlCmdImageBlur.Config.Reader.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Config.Reader.o XmlCmdImageBlur.Config.Reader.cpp
+	$(COMPILE.cc) -g -I. -I../XmlCmd -I../XmlCmdImage -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Config.Reader.o XmlCmdImageBlur.Config.Reader.cpp
 
 ${OBJECTDIR}/XmlCmdImageBlur.Config.Settings.o: XmlCmdImageBlur.Config.Settings.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Config.Settings.o XmlCmdImageBlur.Config.Settings.cpp
-
-${OBJECTDIR}/XmlCmdImageBlur.Layer.o: XmlCmdImageBlur.Layer.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Layer.o XmlCmdImageBlur.Layer.cpp
-
-${OBJECTDIR}/XmlCmdImageBlur.Pixel.o: XmlCmdImageBlur.Pixel.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Pixel.o XmlCmdImageBlur.Pixel.cpp
-
-${OBJECTDIR}/XmlCmdImageBlur.Row.o: XmlCmdImageBlur.Row.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Row.o XmlCmdImageBlur.Row.cpp
+	$(COMPILE.cc) -g -I. -I../XmlCmd -I../XmlCmdImage -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Config.Settings.o XmlCmdImageBlur.Config.Settings.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I. -I../XmlCmd -I../XmlCmdImage -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
 	cd ../XmlCmd && ${MAKE}  -f Makefile CONF=Debug
+	cd ../XmlCmdImage && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -117,6 +102,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Subprojects
 .clean-subprojects:
 	cd ../XmlCmd && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../XmlCmdImage && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

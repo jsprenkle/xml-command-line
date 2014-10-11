@@ -21,7 +21,8 @@
 #include <XmlCmd.h>
 
 #include "XmlCmdImageBlur.Config.Settings.h"
-#include "XmlCmdImageBlur.Layer.h"
+#include "XmlCmd.ImageReader.h"
+#include "XmlCmd.ImageWriter.h"
 
 namespace XmlCmdImageBlur
 {
@@ -29,19 +30,16 @@ namespace XmlCmdImageBlur
    {
    public:
       App( ::File::Reader& rdr );
-      virtual ~App();
 
       void Process( const ::XmlCmdImageBlur::Config::Settings& config );
-      void Write( ::File::Writer& wrt );
+
+      ::XmlCmd::ImageReader   InputXmlDoc;
+      ::XmlCmd::ImageWriter   OutputXmlDoc;
 
    protected:
       char* buffer;
-      ::XmlCmd::DocumentReader   InputXmlDoc;
-      ::XmlCmd::Document         OutputXmlDoc;
 
-      void ParseInput();
       void CloneContext();
-      Layer layer;
    };
 }
 #endif

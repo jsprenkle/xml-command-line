@@ -7,10 +7,6 @@
       <itemPath>XmlCmdImageBlur.App.h</itemPath>
       <itemPath>XmlCmdImageBlur.Config.Reader.h</itemPath>
       <itemPath>XmlCmdImageBlur.Config.Settings.h</itemPath>
-      <itemPath>XmlCmdImageBlur.Layer.h</itemPath>
-      <itemPath>XmlCmdImageBlur.Pixel.h</itemPath>
-      <itemPath>XmlCmdImageBlur.Row.h</itemPath>
-      <itemPath>XmlCmdImageInterpolate.Layer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -22,9 +18,6 @@
       <itemPath>XmlCmdImageBlur.App.cpp</itemPath>
       <itemPath>XmlCmdImageBlur.Config.Reader.cpp</itemPath>
       <itemPath>XmlCmdImageBlur.Config.Settings.cpp</itemPath>
-      <itemPath>XmlCmdImageBlur.Layer.cpp</itemPath>
-      <itemPath>XmlCmdImageBlur.Pixel.cpp</itemPath>
-      <itemPath>XmlCmdImageBlur.Row.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -37,6 +30,7 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
+      <itemPath>TwoColor.Example.xml</itemPath>
       <itemPath>XmlCmdImageBlur.Config.xml</itemPath>
     </logicalFolder>
   </logicalFolder>
@@ -54,6 +48,7 @@
           <incDir>
             <pElem>.</pElem>
             <pElem>../XmlCmd</pElem>
+            <pElem>../XmlCmdImage</pElem>
             <pElem>../rapidxml-1.13</pElem>
           </incDir>
         </ccTool>
@@ -69,6 +64,18 @@
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmd.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../XmlCmdImage"
+                            CT="3"
+                            CN="Debug"
+                            AC="false"
+                            BL="true"
+                            WD="../XmlCmdImage"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmdimage.a">
               </makeArtifact>
             </linkerLibProjectItem>
           </linkerLibItems>
@@ -89,20 +96,6 @@
       </item>
       <item path="XmlCmdImageBlur.Config.Settings.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="XmlCmdImageBlur.Layer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Layer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Pixel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Pixel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Row.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Row.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageInterpolate.Layer.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -122,6 +115,7 @@
           <incDir>
             <pElem>.</pElem>
             <pElem>../XmlCmd</pElem>
+            <pElem>../XmlCmdImage</pElem>
             <pElem>../rapidxml-1.13</pElem>
           </incDir>
         </ccTool>
@@ -145,6 +139,18 @@
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmd.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../XmlCmdImage"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="true"
+                            WD="../XmlCmdImage"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmdimage.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -162,20 +168,6 @@
             flavor2="0">
       </item>
       <item path="XmlCmdImageBlur.Config.Settings.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Layer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Layer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Pixel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Pixel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Row.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Row.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageInterpolate.Layer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -226,20 +218,6 @@
             flavor2="0">
       </item>
       <item path="XmlCmdImageBlur.Config.Settings.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Layer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Layer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Pixel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Pixel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Row.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="XmlCmdImageBlur.Row.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="XmlCmdImageInterpolate.Layer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

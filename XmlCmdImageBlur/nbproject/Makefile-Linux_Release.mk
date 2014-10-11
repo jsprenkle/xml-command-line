@@ -38,9 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/XmlCmdImageBlur.App.o \
 	${OBJECTDIR}/XmlCmdImageBlur.Config.Reader.o \
 	${OBJECTDIR}/XmlCmdImageBlur.Config.Settings.o \
-	${OBJECTDIR}/XmlCmdImageBlur.Layer.o \
-	${OBJECTDIR}/XmlCmdImageBlur.Pixel.o \
-	${OBJECTDIR}/XmlCmdImageBlur.Row.o \
 	${OBJECTDIR}/main.o
 
 
@@ -84,21 +81,6 @@ ${OBJECTDIR}/XmlCmdImageBlur.Config.Settings.o: XmlCmdImageBlur.Config.Settings.
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Config.Settings.o XmlCmdImageBlur.Config.Settings.cpp
-
-${OBJECTDIR}/XmlCmdImageBlur.Layer.o: XmlCmdImageBlur.Layer.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Layer.o XmlCmdImageBlur.Layer.cpp
-
-${OBJECTDIR}/XmlCmdImageBlur.Pixel.o: XmlCmdImageBlur.Pixel.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Pixel.o XmlCmdImageBlur.Pixel.cpp
-
-${OBJECTDIR}/XmlCmdImageBlur.Row.o: XmlCmdImageBlur.Row.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../XmlCmd -I../rapidxml-1.13 -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmdImageBlur.Row.o XmlCmdImageBlur.Row.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

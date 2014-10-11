@@ -22,6 +22,11 @@ namespace XmlCmdImageBlur
          Settings result;
          result.OutputFile = ReadNode( root, XmlNamespacePrefix, "OutputFile" );
          result.InputFile = ReadNode( root, XmlNamespacePrefix, "InputFile" );
+         
+         result.radius = atoi( ReadNode( root, XmlNamespacePrefix, "Radius", "5" ).c_str() );
+         if ( result.radius < 1 )
+            throw ::std::runtime_error( "The blur radius setting is zero" );
+         
          return result;
       }
    }

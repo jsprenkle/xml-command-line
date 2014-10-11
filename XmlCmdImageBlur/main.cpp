@@ -98,7 +98,7 @@ int main( int argc, char** argv )
             wrt.open( stdout );
          else
             wrt.open( config.OutputFile.c_str() );
-      app.Write( wrt );
+      app.OutputXmlDoc.Write( wrt );
    }
    catch ( ::std::runtime_error& ex )
    {

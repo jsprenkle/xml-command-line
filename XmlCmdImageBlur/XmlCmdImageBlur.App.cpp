@@ -5,7 +5,7 @@
  * Created on September 23, 2014
  */
 #include <time.h>
-#include <rapidxml_print.hpp>
+#include <math.h>
 
 #include "XmlCmdImageBlur.App.h"
 
@@ -13,128 +13,90 @@ namespace XmlCmdImageBlur
 {
    App::App( ::File::Reader& rdr )
       : OutputXmlDoc( "http://www.XmlCommandLine.org/Image/1.0", "", "Image" )
-      , InputXmlDoc( rdr, "Image", "http://www.XmlCommandLine.org/Image/1.0" )
+      , InputXmlDoc( rdr )
    {
    }
    
-   App::~App()
-   {
-   }
-
-   void App::ParseInput()
-   {
-      ::rapidxml::xml_node<>* ContentNode = InputXmlDoc.root->first_node( "Content" );
-      if ( ! ContentNode )
-         throw ::std::runtime_error( "The image has no Content node" );
-
-      ::rapidxml::xml_node<>* LayerNode = ContentNode->first_node( "Layer" );
-      if ( ! LayerNode )
-         throw ::std::runtime_error( "The image has no Layer node" );
-      
-      layer.z = InputXmlDoc.ReadNumericAttribute( LayerNode, "z" );
-      layer.Width = InputXmlDoc.ReadNumericAttribute( LayerNode, "Width" );
-      layer.Height = InputXmlDoc.ReadNumericAttribute( LayerNode, "Height" );
-      
-      ::rapidxml::xml_node<>* RowNode = LayerNode->first_node( "Row" );
-      if ( ! RowNode )
-         throw ::std::runtime_error( "The image has no Row nodes" );
-      while ( RowNode )
-      {
-         Row row;
-         row.y = InputXmlDoc.ReadNumericAttribute( RowNode, "y" );
-
-         ::rapidxml::xml_node<>* PixelNode = RowNode->first_node( "Pixel" );
-         while ( PixelNode )
-         {
-            Pixel pixel;
-            pixel.x = InputXmlDoc.ReadNumericAttribute( PixelNode, "x" );
-            pixel.r = InputXmlDoc.ReadNumericAttribute( PixelNode, "r" );
-            pixel.g = InputXmlDoc.ReadNumericAttribute( PixelNode, "g" );
-            pixel.b = InputXmlDoc.ReadNumericAttribute( PixelNode, "b" );
-            pixel.a = InputXmlDoc.ReadNumericAttribute( PixelNode, "a" );
-            row.PixelMap[pixel.x] = pixel;
-
-            PixelNode = RowNode->next_sibling( "Pixel" );
-         }
-         layer.RowMap[row.y] = row;
-         
-         RowNode = LayerNode->next_sibling( "Row" );
-      }
-   }
-
-//   double const pi = 3.14159;
-//   // r = radius
-//   void App::gaussBlur_1( float r )
-//   {
-//      double rs = ceil( r * 2.57f ); // significant radius
-//      for ( uint32_t i = 0; i < height; i++ )
-//         for ( uint32_t j = 0; j < width; j++ )
-//         {
-//            double val = 0, wsum = 0;
-//            for ( uint32_t iy = i - rs; iy < i + rs + 1; iy++ )
-//               for ( uint32_t ix = j - rs; ix < j + rs + 1; ix++ )
-//               {
-//                  double x = ::min( width - 1, ::max( 0, ix ) );
-//                  double y = ::min( height - 1, ::max( 0, iy ) );
-//                  double dsq = ( ix - j )*( ix - j )+( iy - i )*( iy - i );
-//                  double wght = ::exp( -dsq / ( 2 * r * r ) ) / ( pi * 2 * r * r );
-//                  val += png[4 * ((y * width) + x)] * wght;
-//                  val += wght;
-//               }
-//            output[4 * ((i * width) + j)] = ::round( val / wsum );
-//         }
-//   }      
-
    void App::Process( const ::XmlCmdImageBlur::Config::Settings& config )
    {
-      ParseInput();
-//      output.reserve( png.size() );
-//      gaussBlur_1( config.sigma );
+      uint32_t mWidth = InputXmlDoc.LayerMap[0].Width;
+      uint32_t mHeight = InputXmlDoc.LayerMap[0].Height;
       
-      ::rapidxml::xml_node<>* ContentNode = OutputXmlDoc.AppendChildNode( OutputXmlDoc.root, "Content" );
-    
-      ::rapidxml::xml_node<>* LayerNode = OutputXmlDoc.AppendChildNode( ContentNode, "Layer" );
-      OutputXmlDoc.AppendAttribute( LayerNode, "z", toString< uint32_t >( layer.z ) );
-      OutputXmlDoc.AppendAttribute( LayerNode, "Width", toString< uint32_t >( layer.Width ) );
-      OutputXmlDoc.AppendAttribute( LayerNode, "Height", toString< uint32_t >( layer.Height ) );
+      if ( mWidth < 1 || mHeight < 1 )
+         throw ::std::runtime_error( "Image is too small to apply blur" );
+      
+      float sigma2 = 2 * config.radius * config.radius;
+      const uint32_t size = 5; //good approximation of filter
+      const uint32_t zero = 0;
 
-      // if no input is provided use an empty doppelganger
-      Row EmptyRow;
-      
-      // foreach Row
-      for ( uint32_t y = 0; y < layer.Height; ++y )
+      // foreach layer
+      ::std::map< uint32_t, ::XmlCmd::Layer >::const_iterator il;
+      for ( il = InputXmlDoc.LayerMap.begin(); il != InputXmlDoc.LayerMap.end(); ++il )
       {
-         ::rapidxml::xml_node<>* RowNode = OutputXmlDoc.AppendChildNode( LayerNode, "Row" );
-         OutputXmlDoc.AppendAttribute( RowNode, "y", toString< uint32_t >( y ) );
+         ::XmlCmd::Layer layer = il->second;
 
-         Row* row;
-         ::std::map< uint32_t, Row >::iterator ir = layer.RowMap.find( y );
-         if ( ir != layer.RowMap.end() )
-            row = &(ir->second);
-         else
-            row = &EmptyRow;
+         // create output document Layer node(s)
+         OutputXmlDoc.LayerMap[layer.z] = layer;
 
-         // foreach Pixel
-         for ( uint32_t x = 0; x < layer.Width; ++x )
+         // perform blur
+         double sum;
+
+         // blur x components
+         ::std::map< uint32_t, ::XmlCmd::Row >::const_iterator ir;
+         for ( ir = layer.RowMap.begin(); ir != layer.RowMap.end(); ++ir )
          {
-            ::rapidxml::xml_node<>* PixelNode = OutputXmlDoc.AppendChildNode( RowNode, "Pixel" );
-            OutputXmlDoc.AppendAttribute( PixelNode, "x", toString< uint32_t >( x ) );
+            ::XmlCmd::Row row = ir->second;
 
-            Pixel InterpolatedPixel;
-            Pixel* pixel;
-            ::std::map< uint32_t, Pixel >::iterator ip = row->PixelMap.find( x );
-            if ( ip != row->PixelMap.end() )
-               pixel = &(ip->second);
-            else
+            // create row
+            OutputXmlDoc.LayerMap[layer.z].RowMap[row.y] = row;
+
+            ::std::map< uint32_t, ::XmlCmd::Pixel >::const_iterator ip;
+            for ( ip = row.PixelMap.begin(); ip != row.PixelMap.end(); ++ip )
             {
-               //InterpolatedPixel = layer.CalculateWeight( x, y );
-               //pixel = &InterpolatedPixel;
-            }
+               ::XmlCmd::Pixel pixel = ip->second;
 
-            OutputXmlDoc.AppendAttribute( PixelNode, "r", toString< uint32_t >( pixel->r ) );
-            OutputXmlDoc.AppendAttribute( PixelNode, "g", toString< uint32_t >( pixel->g ) );
-            OutputXmlDoc.AppendAttribute( PixelNode, "b", toString< uint32_t >( pixel->b ) );
-            OutputXmlDoc.AppendAttribute( PixelNode, "a", toString< uint32_t >( pixel->a ) );
+               double r = 0;
+               double g = 0;
+               double b = 0;
+               sum = 0;
+               for ( uint32_t x = ::std::max<int>( zero, pixel.x - size ); x <= ::std::min<int>( mWidth - 1, (int)pixel.x + size ); x++ )
+               {
+                  ::std::map< uint32_t, ::XmlCmd::Pixel >::const_iterator ipIn = row.PixelMap.find( x );
+                  if ( ipIn != row.PixelMap.end() )
+                  {
+                     ::XmlCmd::Pixel pixelIn = ipIn->second;
+                     int dx = x - (float)pixel.x;
+                     float factor = exp( -dx * dx / sigma2 );
+                     sum += factor;
+                     r += pixelIn.r * factor;
+                     g += pixelIn.g * factor;
+                     b += pixelIn.b * factor;
+                  }
+               };
+               for ( uint32_t y = ::std::max<int>( zero, (int)row.y - size ); y <= ::std::min<int>( mHeight - 1, (int)row.y + size ); y++ )
+               {
+                  ::std::map< uint32_t, ::XmlCmd::Row >::const_iterator irIn = layer.RowMap.find( y );
+                  if ( irIn != layer.RowMap.end() )
+                  {
+                     ::XmlCmd::Row rowIn = irIn->second;
+                     ::std::map< uint32_t, ::XmlCmd::Pixel >::const_iterator ipIn = rowIn.PixelMap.find( y );
+                     if ( ipIn != row.PixelMap.end() )
+                     {
+                        ::XmlCmd::Pixel pixelIn = ipIn->second;
+                        int dy = y - (float)rowIn.y;
+                        float factor = exp( -dy * dy / sigma2 );
+                        sum += factor;
+                        r += pixelIn.r * factor;
+                        g += pixelIn.g * factor;
+                        b += pixelIn.b * factor;
+                     }
+                  }
+               };
+               // write result to output document
+               OutputXmlDoc.LayerMap[layer.z].RowMap[row.y].PixelMap[pixel.x].r = ::std::min<uint32_t>( r / sum, UINT32_MAX );
+               OutputXmlDoc.LayerMap[layer.z].RowMap[row.y].PixelMap[pixel.x].g = ::std::min<uint32_t>( g / sum, UINT32_MAX );
+               OutputXmlDoc.LayerMap[layer.z].RowMap[row.y].PixelMap[pixel.x].b = ::std::min<uint32_t>( b / sum, UINT32_MAX );
+            }
          }
       }
       
@@ -167,12 +129,5 @@ namespace XmlCmdImageBlur
       ::rapidxml::xml_node<>* SourceNode = OutputXmlDoc.AppendChildNode( UpdateNode, "Source" );
       OutputXmlDoc.AppendAttribute( SourceNode, "Name", "XmlCmdImageBlur" );
       OutputXmlDoc.AppendAttribute( SourceNode, "Version", "1.0" );
-   }
-
-   void App::Write( ::File::Writer& wrt )
-   {
-      // write result as an XML document
-      ::File::WriterIterator wit( wrt );
-      ::rapidxml::print( wit, OutputXmlDoc, ::rapidxml::print_no_indenting );
    }
 }

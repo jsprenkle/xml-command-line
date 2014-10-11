@@ -24,6 +24,7 @@ namespace XmlCmdImageBlur
          
          ::std::string OutputFile;
          ::std::string InputFile;
+         uint16_t      radius;
 
          Settings();
       };
