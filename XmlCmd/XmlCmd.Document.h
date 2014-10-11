@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <rapidxml.hpp>
+#define __STDC_LIMIT_MACROS
 #include <stdint.h>
 
 namespace XmlCmd
@@ -33,13 +34,6 @@ namespace XmlCmd
       void write( ::std::ostream& OutputStream );
 
       /**
-       * Validate an already existing document
-       * @param NodeName
-       * @param XmlNamespace
-       */
-      void ValidateRootNode( const char* NodeName, const ::std::string& XmlNamespace );
-      
-      /**
        * Create and append a child node to the given parent.
        * @param Parent
        * @param type Node name (including namespace prefix)
@@ -52,7 +46,7 @@ namespace XmlCmd
        * @param Parent
        * @param type Node name (including namespace prefix)
        */
-      ::rapidxml::xml_node<>* AppendChildNode( ::rapidxml::xml_node<>* Parent, const char* type );
+      virtual ::rapidxml::xml_node<>* AppendChildNode( ::rapidxml::xml_node<>* Parent, const char* type );
       
       /**
        * Add an attribute to a given parent node

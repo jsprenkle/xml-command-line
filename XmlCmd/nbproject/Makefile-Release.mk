@@ -38,7 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/File.Reader.o \
 	${OBJECTDIR}/File.Writer.o \
 	${OBJECTDIR}/XmlCmd.Document.o \
-	${OBJECTDIR}/XmlCmd.DocumentReader.o
+	${OBJECTDIR}/XmlCmd.DocumentReader.o \
+	${OBJECTDIR}/XmlCmd.DocumentWriter.o
 
 
 # C Compiler Flags
@@ -86,6 +87,11 @@ ${OBJECTDIR}/XmlCmd.DocumentReader.o: XmlCmd.DocumentReader.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -I. -I../rapidxml-1.13 -flto -flto-partition=none -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmd.DocumentReader.o XmlCmd.DocumentReader.cpp
+
+${OBJECTDIR}/XmlCmd.DocumentWriter.o: XmlCmd.DocumentWriter.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -I../rapidxml-1.13 -flto -flto-partition=none -MMD -MP -MF $@.d -o ${OBJECTDIR}/XmlCmd.DocumentWriter.o XmlCmd.DocumentWriter.cpp
 
 # Subprojects
 .build-subprojects:

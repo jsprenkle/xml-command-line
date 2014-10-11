@@ -17,6 +17,7 @@ namespace XmlCmd
    Document::Document( const char* NamespaceString, const char* prefix, const char* type, const char* Declaration )
       : Declaration( Declaration )
       , prefix( prefix )
+      , root( 0 )
    {
       // xml declaration. TODO: use parameter
       ::rapidxml::xml_node<>* decl = allocate_node( ::rapidxml::node_declaration );
@@ -37,49 +38,6 @@ namespace XmlCmd
       append_node( root );
    }
    
-   void Document::ValidateRootNode( const char* NodeName, const ::std::string& XmlNamespace )
-   {
-      root = first_node();
-      if ( ! root )
-         throw ::std::runtime_error( "No root node in document" );
-      
-      // check the node name and namespace
-      ::std::string XmlNamespaceAttribName( "xmlns" );
-
-      // get the namespace prefix (if present)
-      ::std::string RootNodeName( root->name(), root->name_size() );
-      size_t separator = RootNodeName.find( ":" );
-      if ( separator != ::std::string::npos )
-      {
-         // extract text prefix
-         XmlNamespacePrefix.assign( RootNodeName.c_str(), separator );
-
-         // create attribute name
-         XmlNamespaceAttribName.append( ":" );
-         XmlNamespaceAttribName.append( XmlNamespacePrefix );
-
-         // fix prefix for use with nodes
-         XmlNamespacePrefix.append( ":" );
-
-         // remove cruft from root node
-         RootNodeName.erase( 0, separator + 1 );
-      }
-
-      if ( RootNodeName != NodeName )
-         throw ::std::runtime_error( "Invalid root node name" );
-
-      if ( ! XmlNamespace.empty() )
-      {
-         ::rapidxml::xml_attribute<>* nsattr = root->first_attribute( XmlNamespaceAttribName.c_str() );
-         if ( !nsattr )
-            throw ::std::runtime_error( "Invalid document. no namespace" );
-
-         ::std::string NameSpaceAttribute( nsattr->value(), nsattr->value_size() );
-         if ( NameSpaceAttribute != XmlNamespace ) 
-            throw ::std::runtime_error( "Invalid namespace" );
-      }
-   }
-
    const char* Document::PrefixType( const char* type )
    {
       ::std::string temp( prefix );

@@ -8,6 +8,7 @@
       <itemPath>File.Writer.h</itemPath>
       <itemPath>XmlCmd.Document.h</itemPath>
       <itemPath>XmlCmd.DocumentReader.h</itemPath>
+      <itemPath>XmlCmd.DocumentWriter.h</itemPath>
       <itemPath>XmlCmd.h</itemPath>
       <itemPath>conversion.h</itemPath>
     </logicalFolder>
@@ -22,6 +23,7 @@
       <itemPath>File.Writer.cpp</itemPath>
       <itemPath>XmlCmd.Document.cpp</itemPath>
       <itemPath>XmlCmd.DocumentReader.cpp</itemPath>
+      <itemPath>XmlCmd.DocumentWriter.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -69,6 +71,10 @@
       <item path="XmlCmd.DocumentReader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="XmlCmd.DocumentReader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmd.DocumentWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmd.DocumentWriter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="XmlCmd.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -119,6 +125,10 @@
       </item>
       <item path="XmlCmd.DocumentReader.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="XmlCmd.DocumentWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmd.DocumentWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="XmlCmd.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="conversion.h" ex="false" tool="3" flavor2="0">
@@ -157,6 +167,10 @@
       </item>
       <item path="XmlCmd.DocumentReader.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="XmlCmd.DocumentWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmd.DocumentWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="XmlCmd.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="conversion.h" ex="false" tool="3" flavor2="0">
@@ -194,6 +208,10 @@
       <item path="XmlCmd.DocumentReader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="XmlCmd.DocumentReader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="XmlCmd.DocumentWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="XmlCmd.DocumentWriter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="XmlCmd.h" ex="false" tool="3" flavor2="0">
       </item>

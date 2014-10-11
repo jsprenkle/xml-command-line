@@ -12,5 +12,6 @@
 #include "File.Reader.h"
 #include "XmlCmd.Document.h"
 #include "XmlCmd.DocumentReader.h"
+#include "XmlCmd.DocumentWriter.h"
 
 #endif

@@ -76,9 +76,9 @@ namespace XmlCmd
          delete [] buffer;
    }
    
-   void DocumentReader::Validate( const char* RootNodeName, const char* Namespace )
+   void DocumentReader::Validate( const char* NodeName, const ::std::string& XmlNamespace )
    {
-      // <editor-fold defaultstate="collapsed" desc="validate the document">
+      // <editor-fold defaultstate="collapsed" desc="Parse the document xml">
       try
       {
          parse< ::rapidxml::parse_no_data_nodes | ::rapidxml::parse_trim_whitespace >( buffer );
@@ -96,8 +96,48 @@ namespace XmlCmd
       }
       // </editor-fold>
 
+      // <editor-fold defaultstate="collapsed" desc="validate the document">
       // check the root node name and namespace
-      ValidateRootNode( RootNodeName, Namespace );
+      root = first_node();
+      if ( ! root )
+         throw ::std::runtime_error( "No root node in document" );
+      
+      // check the node name and namespace
+      ::std::string XmlNamespaceAttribName( "xmlns" );
+
+      // get the namespace prefix (if present)
+      ::std::string RootNodeName( root->name(), root->name_size() );
+      size_t separator = RootNodeName.find( ":" );
+      if ( separator != ::std::string::npos )
+      {
+         // extract text prefix
+         XmlNamespacePrefix.assign( RootNodeName.c_str(), separator );
+
+         // create attribute name
+         XmlNamespaceAttribName.append( ":" );
+         XmlNamespaceAttribName.append( XmlNamespacePrefix );
+
+         // fix prefix for use with nodes
+         XmlNamespacePrefix.append( ":" );
+
+         // remove cruft from root node
+         RootNodeName.erase( 0, separator + 1 );
+      }
+
+      if ( RootNodeName != NodeName )
+         throw ::std::runtime_error( "Invalid root node name" );
+
+      if ( ! XmlNamespace.empty() )
+      {
+         ::rapidxml::xml_attribute<>* nsattr = root->first_attribute( XmlNamespaceAttribName.c_str() );
+         if ( !nsattr )
+            throw ::std::runtime_error( "Invalid document. no namespace" );
+
+         ::std::string NameSpaceAttribute( nsattr->value(), nsattr->value_size() );
+         if ( NameSpaceAttribute != XmlNamespace ) 
+            throw ::std::runtime_error( "Invalid namespace" );
+      }
+      // </editor-fold>
    }
    
    uint32_t DocumentReader::ReadNumericAttribute( ::rapidxml::xml_node<>* Node, const char* name )

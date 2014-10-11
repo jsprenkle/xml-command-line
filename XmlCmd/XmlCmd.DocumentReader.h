@@ -9,7 +9,7 @@
 #ifndef XMLCMD_DOCUMENTREADER_H
 #define	XMLCMD_DOCUMENTREADER_H
 
-#include <XmlCmd.h>
+#include "XmlCmd.h"
 
 namespace XmlCmd
 {
@@ -50,7 +50,7 @@ namespace XmlCmd
    private:
       char* buffer;
       
-      void Validate( const char* RootNodeName, const char* Namespace );
+      void Validate( const char* RootNodeName, const ::std::string& Namespace );
    };
 }
 #endif
