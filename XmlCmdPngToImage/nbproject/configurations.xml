@@ -145,6 +145,7 @@
         </asmTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdPngToImage</output>
+          <stripSymbols>true</stripSymbols>
           <linkerLibItems>
             <linkerLibProjectItem>
               <makeArtifact PL="../lodepng"

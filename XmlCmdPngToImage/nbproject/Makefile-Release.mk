@@ -67,7 +67,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdPngToImage: ../XmlCmd/dist/Rele
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdPngToImage: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdPngToImage ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCmdPngToImage ${OBJECTFILES} ${LDLIBSOPTIONS} -s
 
 ${OBJECTDIR}/_ext/41244727/XmlCmdPngToImage.App.o: ../XmlCmdPngToImage/XmlCmdPngToImage.App.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/41244727

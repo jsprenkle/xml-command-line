@@ -20,9 +20,9 @@ namespace XmlCmdPngToImage
       Settings Reader::Parse()
       {
          Settings result;
-         result.OutputFile = ::XmlCmd::Document::ReadNode( doc.root, doc.XmlNamespacePrefix, "OutputFile" );
-         result.InputFile = ::XmlCmd::Document::ReadNode( doc.root, doc.XmlNamespacePrefix, "InputFile" );
-         result.sigma = stringTo< float >( ::XmlCmd::Document::ReadNode( doc.root, doc.XmlNamespacePrefix, "InputFile" ) );
+         result.OutputFile = ::XmlCmd::Document::ReadNode( root, XmlNamespacePrefix, "OutputFile" );
+         result.InputFile = ::XmlCmd::Document::ReadNode( root, XmlNamespacePrefix, "InputFile" );
+         result.sigma = stringTo< float >( ::XmlCmd::Document::ReadNode( root, XmlNamespacePrefix, "InputFile" ) );
          return result;
       }
    }
