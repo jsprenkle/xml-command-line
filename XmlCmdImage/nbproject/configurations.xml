@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="89">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>../XmlCmdImage/XmlCmd.Image.h</itemPath>
+      <itemPath>../XmlCmdImage/XmlCmd.ImageReader.h</itemPath>
+      <itemPath>../XmlCmdImage/XmlCmd.ImageWriter.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>../XmlCmdImage/XmlCmd.Image.cpp</itemPath>
+      <itemPath>../XmlCmdImage/XmlCmd.ImageReader.cpp</itemPath>
+      <itemPath>../XmlCmdImage/XmlCmd.ImageWriter.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../XmlCmd</pElem>
+            <pElem>../rapidxml-1.13</pElem>
+          </incDir>
+        </ccTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="../XmlCmdImage/XmlCmd.Image.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.Image.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageReader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageReader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageWriter.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageWriter.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <stripSymbols>true</stripSymbols>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../XmlCmd</pElem>
+            <pElem>../rapidxml-1.13</pElem>
+          </incDir>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="../XmlCmdImage/XmlCmd.Image.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.Image.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageReader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageReader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageWriter.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageWriter.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Linux_Release" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../XmlCmd</pElem>
+            <pElem>../rapidxml-1.13</pElem>
+          </incDir>
+        </ccTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="../XmlCmdImage/XmlCmd.Image.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.Image.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageReader.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageReader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageWriter.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../XmlCmdImage/XmlCmd.ImageWriter.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
