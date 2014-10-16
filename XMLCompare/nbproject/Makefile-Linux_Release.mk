@@ -52,13 +52,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../XmlCmd/dist/Linux_Debug/GNU-Linux-x86/libxmlcmd.a
+LDLIBSOPTIONS=../XmlCmd/dist/Linux_Release/GNU-Linux-x86/libxmlcmd.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCompare
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCompare: ../XmlCmd/dist/Linux_Debug/GNU-Linux-x86/libxmlcmd.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCompare: ../XmlCmd/dist/Linux_Release/GNU-Linux-x86/libxmlcmd.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/XmlCompare: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -71,7 +71,7 @@ ${OBJECTDIR}/main.o: main.cpp
 
 # Subprojects
 .build-subprojects:
-	cd ../XmlCmd && ${MAKE}  -f Makefile CONF=Linux_Debug
+	cd ../XmlCmd && ${MAKE}  -f Makefile CONF=Linux_Release
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -80,7 +80,7 @@ ${OBJECTDIR}/main.o: main.cpp
 
 # Subprojects
 .clean-subprojects:
-	cd ../XmlCmd && ${MAKE}  -f Makefile CONF=Linux_Debug clean
+	cd ../XmlCmd && ${MAKE}  -f Makefile CONF=Linux_Release clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

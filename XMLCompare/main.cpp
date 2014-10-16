@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Jay Sprenkle
  *
- * Compare the content of two xml files. Returns exit code of non zero as a boolean difference indicator.
+ * Compare the content of two xml files for equality
  * 
  * Created on October 11, 2014, 9:54 AM
  */
@@ -13,6 +13,12 @@
 
 #include <XmlCmd.h>
 
+/**
+ * Compare two rapidxml base classes for equality. node and attribute are both derived from this class so it works for either
+ * @param base1
+ * @param base2
+ * @return 
+ */
 bool baseequal( ::rapidxml::xml_base<>* base1, ::rapidxml::xml_base<>* base2 )
 {
    if ( ! base1 || ! base2 )
@@ -37,6 +43,13 @@ bool baseequal( ::rapidxml::xml_base<>* base1, ::rapidxml::xml_base<>* base2 )
    return true;
 }
 
+/**
+ * Compare two rapidxml nodes for equality. Recursively calls itself to compare child nodes.
+ * Code changed to ignore ordering of nodes in the documents.
+ * @param Node1
+ * @param Node2
+ * @return 
+ */
 bool equal( ::rapidxml::xml_node<>* Node1, ::rapidxml::xml_node<>* Node2 )
 {
    // two nodes must be the same and have same content
@@ -45,35 +58,55 @@ bool equal( ::rapidxml::xml_node<>* Node1, ::rapidxml::xml_node<>* Node2 )
 
    // compare attributes
    ::rapidxml::xml_attribute<>* attr1 = Node1->first_attribute();
-   ::rapidxml::xml_attribute<>* attr2 = Node2->first_attribute();
-   while ( attr1 || attr2 )
+   while ( attr1 )
    {
-      // must both have attribute
-      if ( ! attr1 || ! attr2 || ! baseequal( attr1, attr2 ) )
+      // find matching attribute in Node2
+      ::rapidxml::xml_attribute<>* attr2 = Node2->first_attribute();
+      while ( attr2 )
+      {
+         // must both have attribute
+         if ( baseequal( attr1, attr2 ) )
+            break;
+
+         attr2 = attr2->next_attribute();
+      }
+      if ( ! attr2 )
          return false;
       
       attr1 = attr1->next_attribute();
-      attr2 = attr2->next_attribute();
    }
 
    // compare children
    ::rapidxml::xml_node<>* child1 = Node1->first_node();
-   ::rapidxml::xml_node<>* child2 = Node2->first_node();
-   while ( child1 || child2 )
+   while ( child1 )
    {
-      // both doms must both have the same child. both must compare, children of the nodes must be equal
-      if ( ! child1 || ! child2 || ! baseequal( child1, child2 ) || ! equal( child1, child2 ) )
+      ::rapidxml::xml_node<>* child2 = Node2->first_node();
+      while ( child2 )
+      {
+         if ( baseequal( child1, child2 ) && equal( child1, child2 ) )
+            break;
+
+         child2 = child2->next_sibling();
+      }
+      if ( ! child2 )
          return false;
       
       child1 = child1->next_sibling();
-      child2 = child2->next_sibling();
    }
    
    return true;
 }
 
-/*
- * 
+/**
+ * Compare two xml documents for equality.
+ * The file names of the two documents must be specified on the command line
+ * ignores ordering of nodes in the documents. This code does NOT validate
+ * the documents against a schema. It is intended for use as a simple validator
+ * for unit testing of Xml Command line programs.
+ * Returns exit code of non zero as a boolean difference indicator.
+ * @param argc
+ * @param argv
+ * @return 
  */
 int main(int argc, char** argv)
 {
@@ -124,19 +157,20 @@ int main(int argc, char** argv)
       ::XmlCmd::DocumentReader   InputXmlDoc2( rdr2, 0, 0 );
 
       if ( ! equal( InputXmlDoc1.root, InputXmlDoc2.root ) )
-         return 3;
+         return 1;
    }
    catch ( ::std::runtime_error& ex )
    {
       ::std::cerr << ex.what() << "\n";
-      return 1;
+      return 2;
    }
    catch (...)
    {
       ::std::cerr << "Unexpected error with no explanation thrown\n";
-      return 2;
+      return 3;
    }
    
+   // equal. return success
    return 0;
 }
 

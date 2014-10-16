@@ -24,6 +24,8 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
+      <itemPath>first.xml</itemPath>
+      <itemPath>second.xml</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -132,12 +134,12 @@
             <linkerLibProjectItem>
               <makeArtifact PL="../XmlCmd"
                             CT="3"
-                            CN="Linux_Debug"
+                            CN="Linux_Release"
                             AC="true"
                             BL="true"
                             WD="../XmlCmd"
-                            BC="${MAKE}  -f Makefile CONF=Linux_Debug"
-                            CC="${MAKE}  -f Makefile CONF=Linux_Debug clean"
+                            BC="${MAKE}  -f Makefile CONF=Linux_Release"
+                            CC="${MAKE}  -f Makefile CONF=Linux_Release clean"
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libxmlcmd.a">
               </makeArtifact>
             </linkerLibProjectItem>
