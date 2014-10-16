@@ -76,7 +76,7 @@ namespace XmlCmd
          delete [] buffer;
    }
    
-   void DocumentReader::Validate( const char* NodeName, const ::std::string& XmlNamespace )
+   void DocumentReader::Validate( const char* NodeName, const char* XmlNamespace )
    {
       // <editor-fold defaultstate="collapsed" desc="Parse the document xml">
       try
@@ -124,10 +124,10 @@ namespace XmlCmd
          RootNodeName.erase( 0, separator + 1 );
       }
 
-      if ( RootNodeName != NodeName )
+      if ( NodeName && ( RootNodeName != NodeName ) )
          throw ::std::runtime_error( "Invalid root node name" );
 
-      if ( ! XmlNamespace.empty() )
+      if ( XmlNamespace )
       {
          ::rapidxml::xml_attribute<>* nsattr = root->first_attribute( XmlNamespaceAttribName.c_str() );
          if ( !nsattr )

@@ -50,7 +50,7 @@ namespace XmlCmd
    private:
       char* buffer;
       
-      void Validate( const char* RootNodeName, const ::std::string& Namespace );
+      void Validate( const char* RootNodeName, const char* Namespace );
    };
 }
 #endif
