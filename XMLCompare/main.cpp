@@ -52,7 +52,7 @@ bool baseequal( ::rapidxml::xml_base<>* base1, ::rapidxml::xml_base<>* base2 )
  */
 bool equal( ::rapidxml::xml_node<>* Node1, ::rapidxml::xml_node<>* Node2 )
 {
-   // two nodes must be the same and have same content
+   // two nodes must exist, have the same name, and content
    if ( ! Node1 || ! Node2 || ! baseequal( Node1, Node2 ) )
       return false;
 
@@ -73,8 +73,14 @@ bool equal( ::rapidxml::xml_node<>* Node1, ::rapidxml::xml_node<>* Node2 )
       if ( ! attr2 )
          return false;
       
+      // remove attributes that are matched. When finished all attributes should be removed
+      Node2->remove_attribute( attr2 );
       attr1 = attr1->next_attribute();
    }
+   // all attributes should have been removed from node2
+   ::rapidxml::xml_attribute<>* attr2 = Node2->first_attribute();
+   if ( attr2 )
+      return false;
 
    // compare children
    ::rapidxml::xml_node<>* child1 = Node1->first_node();
@@ -90,10 +96,15 @@ bool equal( ::rapidxml::xml_node<>* Node1, ::rapidxml::xml_node<>* Node2 )
       }
       if ( ! child2 )
          return false;
-      
+      // remove nodes that are matched. When finished all nodes should be removed
+      Node2->remove_node( child2 );
       child1 = child1->next_sibling();
    }
    
+   // all child nodes should have been removed from node2
+   ::rapidxml::xml_node<>* child2 = Node2->first_node();
+   if ( child2 )
+      return false;
    return true;
 }
 
