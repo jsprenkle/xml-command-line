@@ -25,17 +25,20 @@ namespace XmlCmd
       decl->append_attribute( allocate_attribute( "encoding", "utf-8" ) );
       append_node( decl );
 
-      // root node
-      root = allocate_node( ::rapidxml::node_element, PrefixType( type ) );
-
-      ::std::string temp( "xmlns" );
-      if ( ::strlen( prefix ) != 0 )
+      if ( type )
       {
-         temp.append( ":" );
-         temp.append( prefix );
+         // root node
+         root = allocate_node( ::rapidxml::node_element, PrefixType( type ) );
+
+         ::std::string temp( "xmlns" );
+         if ( ::strlen( prefix ) != 0 )
+         {
+            temp.append( ":" );
+            temp.append( prefix );
+         }
+         root->append_attribute( allocate_attribute( allocate_string( temp.c_str(), temp.size()+1 ), NamespaceString ) );
+         append_node( root );
       }
-      root->append_attribute( allocate_attribute( allocate_string( temp.c_str(), temp.size()+1 ), NamespaceString ) );
-      append_node( root );
    }
    
    const char* Document::PrefixType( const char* type )
