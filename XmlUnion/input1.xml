@@ -1,0 +1,9 @@
+<root>
+    <a>
+        <a1></a1>
+        <a2 test=""></a2>
+        <a3></a3>
+    </a>
+    <address index="1">1 some street</address>
+    <address index="2">Apt 2</address>
+</root>
