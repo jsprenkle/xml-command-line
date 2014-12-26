@@ -27,7 +27,6 @@
 typedef _off_t __off_t; // is this only necessary on windows mingw?
 #endif
 
-#include <XmlCmdConversion.h>
 #include "lsXml.FileSystem.h"
 
 namespace lsXml
@@ -47,19 +46,17 @@ namespace lsXml
    {
       //2014-06-30T12:00:00
       struct tm* ptm = gmtime( &when );
-      ::std::string s;
-      s.append( NumberToString< int >( ptm->tm_year + 1900, 4 ) );
-      s.append( "-" );
-      s.append( NumberToString< int >( ptm->tm_mon + 1, 2 ) );
-      s.append( "-" );
-      s.append( NumberToString< int >( ptm->tm_mday, 2 ) );
-      s.append( "T" );
-      s.append( NumberToString< int >( ptm->tm_hour, 2 ) );
-      s.append( ":" );
-      s.append( NumberToString< int >( ptm->tm_min, 2 ) );
-      s.append( ":" );
-      s.append( NumberToString< int >( ptm->tm_sec, 2 ) );
-      return s;
+      
+      char b[20];
+      sprintf( b, "%04d-%02d-%02dT%02d:%02d:%02d", ptm->tm_year + 1900, ptm->tm_mon + 1, ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec );
+      return ::std::string( b );
+   }
+
+   ::std::string NumberToString( __off_t n )
+   {
+      char b[21];
+      sprintf( b, "%ld", n );
+      return ::std::string( b );
    }
 
    void FileSystem::AppendContext( ::rapidxml::xml_node<>* Parent, int argc, char** argv )
@@ -207,7 +204,7 @@ namespace lsXml
                      doc.AppendChildNode( element, "Created", DateToString( _stat.st_ctime ) );
                      doc.AppendChildNode( element, "LastRead", DateToString( _stat.st_atime ) );
                      doc.AppendChildNode( element, "LastChanged", DateToString( _stat.st_mtime ) );
-                     doc.AppendChildNode( element, "Size", NumberToString< __off_t >( _stat.st_size, 0 ) );
+                     doc.AppendChildNode( element, "Size", NumberToString( _stat.st_size ) );
                   }
                }
             }

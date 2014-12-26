@@ -4,7 +4,7 @@
         <activeConfTypeElem>1</activeConfTypeElem>
         <activeConfIndexElem>2</activeConfIndexElem>
     </data>
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="6">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="8">
         <file>
             <url>lsxmlFileSystem.cpp</url>
             <bookmark id="1">
@@ -20,6 +20,19 @@
             <bookmark id="4">
                 <name/>
                 <line>293</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>lsXml.FileSystem.cpp</url>
+            <bookmark id="7">
+                <name/>
+                <line>54</line>
+                <key/>
+            </bookmark>
+            <bookmark id="8">
+                <name/>
+                <line>206</line>
                 <key/>
             </bookmark>
         </file>

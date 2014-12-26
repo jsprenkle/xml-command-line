@@ -104,9 +104,11 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" -c lsXml.Config.xml</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" -c lsXml.Config.xml .</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" .</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" . > test2.xml</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" -c lsXml.Config.xml .</runcommand>
-        <rundir></rundir>
+        <runcommand>"${OUTPUT_PATH}" . > test2.xml</runcommand>
+        <rundir>/home/jay/disk3/Documents/lit/library.worldtracker.org/English Literature/E/Eco, Umberto</rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>
