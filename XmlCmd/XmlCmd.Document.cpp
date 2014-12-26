@@ -67,8 +67,9 @@ namespace XmlCmd
    {
       ::rapidxml::xml_node<>* ChildElement = AppendChildNode( Parent, type );
 
-      ::std::string temp = encode( text );
-      ChildElement->value( allocate_string( temp.c_str(), temp.size() ), temp.size() );
+      // encoding is done in the rapidxml::print() method
+      //::std::string temp = encode( text );
+      ChildElement->value( allocate_string( text.c_str(), text.size() ), text.size() );
       
       return ChildElement;
    }
@@ -79,36 +80,36 @@ namespace XmlCmd
       Parent->append_attribute( allocate_attribute( AttributeName, pAttributeValueCopy, 0, AttributeValue.size() ) );
    }
 
-   ::std::string Document::encode( const ::std::string& data )
-   {
-      ::std::string buffer;
-      buffer.reserve( data.size() + 40 );
-      for ( size_t pos = 0; pos != data.size(); ++pos )
-      {
-         switch ( data[pos] )
-         {
-            case '&':
-               buffer.append( "&amp;" );
-               break;
-            case '\"':
-               buffer.append( "&quot;" );
-               break;
-            case '\'':
-               buffer.append( "&apos;" );
-               break;
-            case '<':
-               buffer.append( "&lt;" );
-               break;
-            case '>':
-               buffer.append( "&gt;" );
-               break;
-            default:
-               buffer.append( &data[pos], 1 );
-               break;
-         }
-      }
-      return buffer;
-   }
+//   ::std::string Document::encode( const ::std::string& data )
+//   {
+//      ::std::string buffer;
+//      buffer.reserve( data.size() + 40 );
+//      for ( size_t pos = 0; pos != data.size(); ++pos )
+//      {
+//         switch ( data[pos] )
+//         {
+//            case '&':
+//               buffer.append( "&amp;" );
+//               break;
+//            case '\"':
+//               buffer.append( "&quot;" );
+//               break;
+//            case '\'':
+//               buffer.append( "&apos;" );
+//               break;
+//            case '<':
+//               buffer.append( "&lt;" );
+//               break;
+//            case '>':
+//               buffer.append( "&gt;" );
+//               break;
+//            default:
+//               buffer.append( &data[pos], 1 );
+//               break;
+//         }
+//      }
+//      return buffer;
+//   }
 
    ::std::string Document::ReadNode( ::rapidxml::xml_node<>* current_node, const ::std::string& XmlNamespacePrefix, const char* NodeName, const char* DefaultValue )
    {
